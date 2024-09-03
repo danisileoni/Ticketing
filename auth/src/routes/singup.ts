@@ -1,6 +1,8 @@
 import express, { Request, Response } from "express";
-import User from "../models/user";
 import { body, validationResult } from "express-validator";
+import bcrypt from "bcrypt";
+
+import User from "../models/user";
 import { RequestValidationError } from "../errors/request-validation-error";
 import { MongoServerError } from "mongodb";
 import { BadRequestError } from "../errors/bad-request-error";
@@ -28,7 +30,7 @@ router.post(
 
       const user = new User({
         email,
-        password,
+        password: await bcrypt.hash(password, 10),
       });
 
       await user.save();

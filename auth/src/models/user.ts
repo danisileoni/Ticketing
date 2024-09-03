@@ -4,7 +4,7 @@ export class User {
   @Prop({ unique: true })
   public email!: string;
 
-  @Prop({ minlength: 4, maxlength: 24 })
+  @Prop()
   public password!: string;
 }
 
