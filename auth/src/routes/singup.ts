@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import User from "../models/user";
-import { MongoServerError } from "mongodb";
+import { MongoError } from "mongodb";
 import { BadRequestError } from "../errors/bad-request-error";
 import { validateRequest } from "../middlewares/validate-request";
 
@@ -43,12 +43,12 @@ router.post(
         jwt: userJwt,
       };
 
-      res.status(200).send(user);
+      res.status(201).send(user);
     } catch (error) {
-      if (error instanceof MongoServerError) {
-        if (error.code === 11000) {
-          throw new BadRequestError("The email must be unique");
-        }
+      const mongoError = error as MongoError;
+
+      if (mongoError.code === 11000) {
+        throw new BadRequestError("The email must be unique");
       }
     }
   },
