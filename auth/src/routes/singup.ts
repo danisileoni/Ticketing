@@ -1,12 +1,11 @@
-import express, { Request, Response } from "express";
+import express, { type Request, type Response } from "express";
 import { body } from "express-validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import type { MongoError } from "mongodb";
+import { BadRequestError, validateRequest } from "@dasitickets/common";
 
 import User from "../models/user";
-import { MongoError } from "mongodb";
-import { BadRequestError } from "../errors/bad-request-error";
-import { validateRequest } from "../middlewares/validate-request";
 
 const router = express.Router();
 

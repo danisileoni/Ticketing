@@ -1,12 +1,10 @@
-import express, { Request, Response } from "express";
+import express, { type Request, type Response } from "express";
 import { body } from "express-validator";
-import { validateRequest } from "../middlewares/validate-request";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import User from "../models/user";
-import { BadRequestError } from "../errors/bad-request-error";
-import { NotFoundError } from "../errors/not-found-error";
+import { BadRequestError, validateRequest } from "@dasitickets/common";
 
 const router = express.Router();
 

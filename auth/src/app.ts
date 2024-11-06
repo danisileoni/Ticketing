@@ -2,13 +2,12 @@ import express from "express";
 import "express-async-errors";
 import { json } from "body-parser";
 import cookieSession from "cookie-session";
+import { NotFoundError, errorHandler } from "@dasitickets/common";
 
 import { curretUserRouter } from "./routes/current-user";
 import { singinRouter } from "./routes/singin";
 import { singoutRouter } from "./routes/singout";
 import { singupRouter } from "./routes/singup";
-import { errorHandler } from "./middlewares/error-handler";
-import { NotFoundError } from "./errors/not-found-error";
 
 const app = express();
 app.set("trust proxy", true);
