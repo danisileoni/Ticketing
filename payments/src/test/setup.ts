@@ -31,6 +31,7 @@ beforeEach(async () => {
   }
 });
 
+// key disable
 process.env.STRIPE_KEY =
   "sk_test_51QF1NNJ3iMjbLnvxkjrkgrx7ubmM7u62hS85qK24TZxaYUIV2IJnIZbMGvklKSRw3iiVEECKkuoLplmIETodbubG00lGYbLwP4";
 
